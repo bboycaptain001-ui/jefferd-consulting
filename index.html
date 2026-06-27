@@ -543,6 +543,13 @@
       background: #fff;
       transform: scale(1.3);
     }
+    @media(max-width: 960px) {
+      .cases-inner { padding: 80px 48px 60px; }
+      .logo-wall { grid-template-columns: repeat(2, 1fr); }
+      .logo-item { aspect-ratio: unset; min-height: 110px; padding: 28px 20px; }
+      .logo-item img { max-height: 72px; }
+    }
+
     @media(max-width:768px) {
       #banners { height: 58vw; min-height: 320px; }
       .bn-title { top: 28px; }
