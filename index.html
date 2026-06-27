@@ -872,12 +872,12 @@
       .s-item { padding: 16px 20px; border-left: none !important; border-bottom: 1px solid var(--rule); }
       .s-item:nth-child(odd) { border-right: 1px solid var(--rule); }
 
-      #cases { overflow: hidden; }
-      .cases-inner { padding: 64px 0 48px; }
+      #cases { overflow: hidden; max-width: 100vw; }
+      .cases-inner { padding: 64px 0 48px; overflow: hidden; }
       .cases-inner .label,
       .cases-inner .sec-title { padding-left: 24px; }
-      .logo-wall { grid-template-columns: repeat(2, 1fr); margin-top: 36px; width: 100%; }
-      .logo-item { padding: 24px 14px; }
+      .logo-wall { grid-template-columns: repeat(2, 1fr); margin-top: 36px; width: 100%; max-width: 100%; }
+      .logo-item { padding: 24px 14px; aspect-ratio: unset; min-height: 100px; overflow: hidden; }
       .logo-item img { max-height: 62px; }
 
       .svc-inner { padding: 64px 24px 48px; }
