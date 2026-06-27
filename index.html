@@ -605,6 +605,7 @@
       transition: background .25s;
     }
     .svc-card:hover { background: var(--bg-3); }
+    .svc-card.open .svc-name { color: var(--gold); }
     .svc-num {
       font-family: 'Cormorant Garamond', serif;
       font-size: 11px;
@@ -713,6 +714,7 @@
       transition: background .25s;
     }
     .adv-card:hover { background: var(--bg-2); }
+    .adv-card.open .adv-name { color: var(--gold); }
     .adv-num {
       font-family: 'Cormorant Garamond', serif;
       font-size: 34px;
@@ -870,10 +872,11 @@
       .s-item { padding: 16px 20px; border-left: none !important; border-bottom: 1px solid var(--rule); }
       .s-item:nth-child(odd) { border-right: 1px solid var(--rule); }
 
-      .cases-inner { padding: 64px 0 48px; overflow: hidden; }
+      #cases { overflow: hidden; }
+      .cases-inner { padding: 64px 0 48px; }
       .cases-inner .label,
       .cases-inner .sec-title { padding-left: 24px; }
-      .logo-wall { grid-template-columns: repeat(2, 1fr); margin-top: 36px; }
+      .logo-wall { grid-template-columns: repeat(2, 1fr); margin-top: 36px; width: 100%; }
       .logo-item { padding: 24px 14px; }
       .logo-item img { max-height: 62px; }
 
@@ -1188,9 +1191,9 @@
         </div>
       </div>
 
-      <div class="svc-card" style="background:var(--bg-3)">
+      <div class="svc-card">
         <div class="svc-num">03</div>
-        <div class="svc-name" style="color:var(--gold)">品牌設計</div>
+        <div class="svc-name">品牌設計</div>
         <div class="svc-tag">把品牌想法變成看得見的樣子。</div>
         <div class="svc-desc">從品牌視覺、空間氛圍到內容呈現，建立一致且具有辨識度的品牌形象。讓顧客在看見品牌的第一眼，就能感受到品牌想傳達的價值。</div>
         <button class="expand-btn" onclick="toggle(this)"><span class="ico">+</span>查看完整服務內容</button>
@@ -1363,9 +1366,9 @@
         </div>
       </div>
 
-      <div class="adv-card" style="background:var(--bg-2)">
-        <div class="adv-num" style="color:var(--gold);opacity:1">06</div>
-        <div class="adv-name" style="color:var(--gold)">自營品牌實戰驗證</div>
+      <div class="adv-card">
+        <div class="adv-num">06</div>
+        <div class="adv-name">自營品牌實戰驗證</div>
         <div class="adv-desc">很多顧問教開店，但沒有自己的店。我們持續經營自己的品牌，也持續驗證自己的方法。</div>
         <button class="expand-btn" onclick="toggle(this)"><span class="ico">+</span></button>
         <div class="adv-detail">
@@ -1464,10 +1467,12 @@
 
   // expand / collapse
   function toggle(btn) {
+    const card = btn.closest('.svc-card, .adv-card');
     const detail = btn.nextElementSibling;
     const ico = btn.querySelector('.ico');
     const open = detail.classList.toggle('open');
     ico.textContent = open ? '×' : '+';
+    if (card) card.classList.toggle('open', open);
   }
 
   // banners slider
