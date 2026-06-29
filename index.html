@@ -595,89 +595,144 @@
     }
     .logo-item:hover img { filter: grayscale(0%) opacity(1); }
 
-    /* ── SERVICES ── */
+    /* ── SERVICES (timeline) ── */
     #services {
       background: var(--bg-2);
       border-top: 1px solid var(--rule);
     }
     .svc-inner { padding: 100px 88px 80px; }
-    .svc-grid {
+    .svc-timeline {
+      position: relative;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid var(--rule);
-      border-left: 1px solid var(--rule);
-      margin-top: 56px;
+      grid-template-columns: repeat(6, 1fr);
+      margin-top: 64px;
     }
-    .svc-card {
-      border-right: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule);
-      padding: 38px 32px;
-      transition: background .25s;
+    .svc-timeline::before {
+      content: '';
+      position: absolute;
+      top: 50px;
+      left: calc(100% / 12);
+      right: calc(100% / 12);
+      height: 1px;
+      background: var(--rule);
+      z-index: 0;
     }
-    .svc-card:hover { background: var(--bg-3); }
-    .svc-card.open .svc-name { color: var(--gold); }
-    .svc-num {
+    .svc-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 6px;
+      position: relative;
+      z-index: 1;
+    }
+    .svc-circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 1px solid var(--t3);
+      background: var(--bg-2);
+      color: var(--t3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: border-color .3s, color .3s;
+      flex-shrink: 0;
+    }
+    .svc-circle:hover,
+    .svc-node.open .svc-circle {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .svc-circle svg {
+      width: 30px;
+      height: 30px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .svc-node-num {
       font-family: 'Cormorant Garamond', serif;
       font-size: 11px;
       font-style: italic;
       color: var(--t3);
       letter-spacing: .14em;
-      margin-bottom: 14px;
+      margin-top: 22px;
+      margin-bottom: 8px;
     }
-    .svc-name {
+    .svc-node-name {
       font-family: 'Noto Serif TC', serif;
-      font-size: 24px;
+      font-size: 16px;
       font-weight: 300;
       color: var(--text);
-      margin-bottom: 14px;
-    }
-    .svc-tag {
-      font-size: 13px;
-      color: var(--t2);
       margin-bottom: 10px;
-      line-height: 1.6;
+      transition: color .2s;
     }
-    .svc-desc {
-      font-size: 12px;
-      color: var(--t3);
-      line-height: 1.95;
-      margin-bottom: 26px;
-    }
-    .expand-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
+    .svc-node.open .svc-node-name { color: var(--gold); }
+    .svc-node-keys {
       font-size: 11px;
-      letter-spacing: .16em;
-      color: var(--gold);
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      transition: gap .2s;
+      color: var(--t3);
+      line-height: 1.9;
     }
-    .expand-btn:hover { gap: 14px; }
-    .expand-btn .ico {
-      width: 20px; height: 20px;
-      background: var(--gold);
-      color: var(--bg);
+    .svc-panel {
+      display: none;
+      border-top: 1px solid var(--rule);
+      margin-top: 56px;
+      padding-top: 48px;
+    }
+    .svc-panel.open { display: block; }
+    .svc-panel-hd {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+    .svc-panel-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      font-style: italic;
+      color: var(--t3);
+      letter-spacing: .14em;
+    }
+    .svc-panel-name {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 26px;
+      font-weight: 300;
+      color: var(--text);
+    }
+    .svc-panel-tag { font-size: 13px; color: var(--t2); }
+    .svc-panel-close {
+      margin-left: auto;
+      background: none;
+      border: 1px solid var(--rule);
+      color: var(--t2);
+      width: 32px;
+      height: 32px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 15px;
-      line-height: 1;
+      cursor: pointer;
+      font-size: 18px;
+      transition: color .2s, border-color .2s;
       flex-shrink: 0;
-      font-weight: 300;
     }
-    .expand-detail {
-      display: none;
-      margin-top: 26px;
-      padding-top: 26px;
+    .svc-panel-close:hover { color: var(--text); border-color: var(--t2); }
+    .svc-panel-body {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       border-top: 1px solid var(--rule);
+      border-left: 1px solid var(--rule);
     }
-    .expand-detail.open { display: block; }
-    .detail-group { margin-bottom: 20px; }
-    .detail-group:last-child { margin-bottom: 0; }
+    .svc-panel-body .detail-group {
+      border-right: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: 28px 24px;
+      margin-bottom: 0;
+    }
     .detail-group-title {
       font-size: 10px;
       letter-spacing: .22em;
@@ -891,11 +946,13 @@
       .logo-item img { max-height: 62px; }
 
       .svc-inner { padding: 64px 24px 48px; }
-      .svc-grid { grid-template-columns: 1fr; }
-
-      .adv-inner { padding: 64px 24px 48px; }
-      .adv-header { grid-template-columns: 1fr; gap: 20px; }
-      .adv-grid { grid-template-columns: 1fr; }
+      .svc-timeline { grid-template-columns: repeat(3, 1fr); gap: 32px 0; }
+      .svc-timeline::before { display: none; }
+      .svc-circle { width: 72px; height: 72px; }
+      .svc-circle svg { width: 22px; height: 22px; }
+      .svc-node-name { font-size: 13px; }
+      .svc-node-keys { font-size: 10px; }
+      .svc-panel-body { grid-template-columns: 1fr 1fr; }
 
       .partner-inner { grid-template-columns: 1fr; gap: 36px; padding: 72px 24px; }
 
@@ -915,7 +972,6 @@
     <li><a href="#brands">自有品牌</a></li>
     <li><a href="#cases">案例</a></li>
     <li><a href="#services">服務</a></li>
-    <li><a href="#advantages">核心優勢</a></li>
   </ul>
   <a href="#cta" class="nav-cta">立即諮詢</a>
   <button id="ham" aria-label="選單"><span></span><span></span><span></span></button>
@@ -927,7 +983,6 @@
   <a href="#brands"     onclick="closeMob()">自有品牌</a>
   <a href="#cases"      onclick="closeMob()">案例</a>
   <a href="#services"   onclick="closeMob()">服務</a>
-  <a href="#advantages" onclick="closeMob()">核心優勢</a>
   <a href="#cta"        onclick="closeMob()">立即諮詢</a>
 </div>
 
@@ -937,13 +992,210 @@
     <img src="照片素材/j2.png" alt="傑弗德餐飲顧問" />
   </div>
   <div class="hero-content">
-    <h1 class="hero-hl">不只是開一家店。<br>同時打造一個<br>值得被記住的品牌。</h1>
+    <h1 class="hero-hl">讓好餐飲，<br>成為好品牌</h1>
     <p class="hero-tags">品牌｜商品｜空間｜營運｜行銷</p>
     <p class="hero-body">
-      我們相信，餐飲不只是開一家店，而是創造一段體驗、一個故事，以及讓顧客願意再次回來的理由。<br><br>
-      從商品研發、用餐體驗、文化轉譯到內容企劃，讓品牌不只是能營運，更能持續被討論。
+      從料理研發、用餐體驗、文化轉譯到內容企劃，讓品牌不只是能營運，更能持續被討論。
     </p>
     <a href="#cta" class="btn-gold">立即諮詢 →</a>
+  </div>
+</section>
+
+<!-- BANNERS SLIDER -->
+<section id="banners">
+  <div class="bn-track" id="bnTrack">
+    <div class="bn-slide active">
+      <img src="新banners/碳所.png" alt="碳所音樂餐廳" />
+      <div class="bn-overlay"></div>
+      <div class="bn-title">碳所音樂餐廳</div>
+      <div class="bn-body">
+        <div class="bn-desc">炭火料理 × 現場音樂<br>用一餐，感受最純粹的感官體驗</div>
+        <a class="bn-btn" href="碳所.html">看作品</a>
+      </div>
+    </div>
+    <div class="bn-slide">
+      <img src="新banners/新象園.png" alt="新象園" />
+      <div class="bn-overlay"></div>
+      <div class="bn-title">新象園</div>
+      <div class="bn-body">
+        <div class="bn-desc">東方美學 × 精緻飲食<br>重新定義台灣傳統料理的當代樣貌</div>
+        <a class="bn-btn" href="新象園.html">看作品</a>
+      </div>
+    </div>
+    <div class="bn-slide">
+      <img src="新banners/星月天空.png" alt="星月天空" />
+      <div class="bn-overlay"></div>
+      <div class="bn-title">星月天空</div>
+      <div class="bn-body">
+        <div class="bn-desc">夜色為幕，美食為主角<br>每一桌都是難忘的記憶</div>
+        <a class="bn-btn" href="星月天空.html">看作品</a>
+      </div>
+    </div>
+    <div class="bn-slide">
+      <img src="新banners/渚橋.png" alt="渚橋" />
+      <div class="bn-overlay"></div>
+      <div class="bn-title">渚橋</div>
+      <div class="bn-body">
+        <div class="bn-desc">水岸邊的慢食哲學<br>讓時間在此刻靜止</div>
+        <a class="bn-btn" href="渚橋.html">看作品</a>
+      </div>
+    </div>
+    <div class="bn-slide">
+      <img src="新banners/清酒.png" alt="清酒" />
+      <div class="bn-overlay"></div>
+      <div class="bn-title">清酒</div>
+      <div class="bn-body">
+        <div class="bn-desc">日本清酒文化在地詮釋<br>純粹、細膩、恰到好處</div>
+        <a class="bn-btn" href="清酒.html">看作品</a>
+      </div>
+    </div>
+    <div class="bn-slide">
+      <img src="新banners/純愛.png" alt="純愛" />
+      <div class="bn-overlay"></div>
+      <div class="bn-title">純愛</div>
+      <div class="bn-body">
+        <div class="bn-desc">用料理訴說愛的語言<br>每道菜都是一封情書</div>
+        <a class="bn-btn" href="純愛.html">看作品</a>
+      </div>
+    </div>
+  </div>
+  <button class="bn-arrow bn-prev" id="bnPrev">&#8249;</button>
+  <button class="bn-arrow bn-next" id="bnNext">&#8250;</button>
+  <div class="bn-dots" id="bnDots"></div>
+</section>
+
+<!-- STATS BANNER -->
+<section id="stats">
+  <div class="stats-inner">
+    <div class="s-item">
+      <div class="s-num"><span class="counter" data-target="200">0</span><sup>+</sup></div>
+      <div class="s-lbl">服務品牌數</div>
+    </div>
+    <div class="s-item">
+      <div class="s-num"><span class="counter" data-target="2.0" data-decimal="1">0.0</span>W<sup>+</sup></div>
+      <div class="s-lbl">商品開發</div>
+    </div>
+    <div class="s-item">
+      <div class="s-num"><span class="counter" data-target="5">0</span><sup>+</sup></div>
+      <div class="s-lbl">自營品牌數</div>
+    </div>
+    <div class="s-item">
+      <div class="s-num"><span class="counter" data-target="15">0</span><sup>+</sup></div>
+      <div class="s-lbl">年餐飲實戰經驗</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="svc-inner">
+    <h2 class="sec-title">我們提供的服務</h2>
+    <div class="svc-timeline" id="svcTimeline">
+
+      <div class="svc-node">
+        <button class="svc-circle" onclick="openSvc(0)" aria-label="策略顧問">
+          <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="8"/><circle cx="16" cy="16" r="2" fill="currentColor" stroke="none"/><line x1="16" y1="4" x2="16" y2="10"/><line x1="16" y1="22" x2="16" y2="28"/><line x1="4" y1="16" x2="10" y2="16"/><line x1="22" y1="16" x2="28" y2="16"/></svg>
+        </button>
+        <div class="svc-node-num">01</div>
+        <div class="svc-node-name">策略顧問</div>
+        <div class="svc-node-keys">找到問題<br>建立方向</div>
+      </div>
+
+      <div class="svc-node">
+        <button class="svc-circle" onclick="openSvc(1)" aria-label="專案企劃">
+          <svg viewBox="0 0 32 32"><rect x="7" y="3" width="18" height="26" rx="1.5"/><line x1="11" y1="10" x2="21" y2="10"/><line x1="11" y1="15" x2="21" y2="15"/><line x1="11" y1="20" x2="17" y2="20"/></svg>
+        </button>
+        <div class="svc-node-num">02</div>
+        <div class="svc-node-name">專案企劃</div>
+        <div class="svc-node-keys">整合資源<br>制定方案</div>
+      </div>
+
+      <div class="svc-node">
+        <button class="svc-circle" onclick="openSvc(2)" aria-label="品牌設計">
+          <svg viewBox="0 0 32 32"><path d="M20 5l7 7L11 28H4v-7z"/><line x1="17" y1="8" x2="24" y2="15"/></svg>
+        </button>
+        <div class="svc-node-num">03</div>
+        <div class="svc-node-name">品牌設計</div>
+        <div class="svc-node-keys">建立形象<br>統一視覺</div>
+      </div>
+
+      <div class="svc-node">
+        <button class="svc-circle" onclick="openSvc(3)" aria-label="空間工程">
+          <svg viewBox="0 0 32 32"><rect x="4" y="4" width="24" height="24" rx="1"/><polyline points="4,16 14,16 14,28"/><line x1="16" y1="4" x2="16" y2="14"/><line x1="16" y1="14" x2="28" y2="14"/></svg>
+        </button>
+        <div class="svc-node-num">04</div>
+        <div class="svc-node-name">空間工程</div>
+        <div class="svc-node-keys">動線規劃<br>工程執行</div>
+      </div>
+
+      <div class="svc-node">
+        <button class="svc-circle" onclick="openSvc(4)" aria-label="料理研發">
+          <svg viewBox="0 0 32 32"><line x1="10" y1="4" x2="10" y2="28"/><path d="M7 4 L7 13 Q10 16 13 13 L13 4"/><path d="M22 4 Q26 9 26 14 L22 16 L22 28"/></svg>
+        </button>
+        <div class="svc-node-num">05</div>
+        <div class="svc-node-name">料理研發</div>
+        <div class="svc-node-keys">菜色研發<br>商品策略</div>
+      </div>
+
+      <div class="svc-node">
+        <button class="svc-circle" onclick="openSvc(5)" aria-label="營運管理">
+          <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="5"/><line x1="16" y1="4" x2="16" y2="9"/><line x1="16" y1="23" x2="16" y2="28"/><line x1="4" y1="16" x2="9" y2="16"/><line x1="23" y1="16" x2="28" y2="16"/><line x1="8.3" y1="8.3" x2="11.8" y2="11.8"/><line x1="20.2" y1="20.2" x2="23.7" y2="23.7"/><line x1="23.7" y1="8.3" x2="20.2" y2="11.8"/><line x1="11.8" y1="20.2" x2="8.3" y2="23.7"/></svg>
+        </button>
+        <div class="svc-node-num">06</div>
+        <div class="svc-node-name">營運管理</div>
+        <div class="svc-node-keys">人員培訓<br>持續優化</div>
+      </div>
+
+    </div>
+
+    <!-- shared detail panel -->
+    <div class="svc-panel" id="svcPanel">
+      <div class="svc-panel-hd">
+        <span class="svc-panel-num" id="svcPanelNum"></span>
+        <span class="svc-panel-name" id="svcPanelName"></span>
+        <span class="svc-panel-tag" id="svcPanelTag"></span>
+        <button class="svc-panel-close" onclick="closeSvc()">×</button>
+      </div>
+      <div class="svc-panel-body" id="svcPanelBody"></div>
+    </div>
+
+    <!-- hidden content templates -->
+    <div id="svcTpl0" hidden>
+      <div class="detail-group"><div class="detail-group-title">品牌策略</div><ul><li>創業需求訪談</li><li>品牌現況盤點</li><li>品牌定位分析</li><li>品牌發展策略</li></ul></div>
+      <div class="detail-group"><div class="detail-group-title">市場分析</div><ul><li>市場調查分析</li><li>商圈評估</li><li>競品分析</li><li>消費者輪廓分析</li></ul></div>
+      <div class="detail-group"><div class="detail-group-title">商業規劃</div><ul><li>商業模式評估</li><li>營收結構分析</li><li>營運風險評估</li><li>開店預算規劃</li></ul></div>
+      <div class="detail-group"><div class="detail-group-title">資源盤整</div><ul><li>現有資源盤點</li><li>供應鏈資源盤整</li><li>合作資源評估</li></ul></div>
+    </div>
+    <div id="svcTpl1" hidden>
+      <div class="detail-group"><div class="detail-group-title">專案企劃</div><ul><li>專案提案</li><li>商品企劃提案</li><li>活動企劃</li><li>聯名企劃</li><li>地方創生企劃</li><li>趨勢話題企劃</li></ul></div>
+      <div class="detail-group"><div class="detail-group-title">產品開發企劃</div><ul><li>特色商品企劃</li><li>品牌專屬商品企劃</li><li>文化商品開發</li><li>地方資源商品化</li></ul></div>
+      <div class="detail-group"><div class="detail-group-title">資源整合</div><ul><li>跨域資源整合</li><li>異業合作企劃</li><li>資源媒合協助</li><li>供應鏈資源串聯</li></ul></div>
+      <div class="detail-group"><div class="detail-group-title">文化轉譯</div><ul><li>文化內容轉譯</li><li>地方文化企劃</li><li>風土價值開發</li></ul></div>
+    </div>
+    <div id="svcTpl2" hidden>
+      <div class="detail-group"><div class="detail-group-title">品牌識別</div><ul><li>品牌識別系統</li><li>Logo設計</li><li>品牌設計應用規劃</li></ul></div>
+      <div class="detail-group"><div class="detail-group-title">視覺規劃</div><ul><li>主視覺方向規劃</li><li>店面形象規劃</li><li>菜單設計</li><li>包裝設計</li></ul></div>
+      <div class="detail-group"><div class="detail-group-title">內容設計</div><ul><li>社群視覺設計</li><li>廣告視覺設計</li><li>短影音企劃</li><li>內容策略規劃</li><li>社群經營規劃</li></ul></div>
+    </div>
+    <div id="svcTpl3" hidden>
+      <div class="detail-group"><div class="detail-group-title">空間規劃</div><ul><li>場域規劃</li><li>店面配置規劃</li><li>客席規劃</li><li>工作區規劃</li><li>空間體驗設計</li></ul></div>
+      <div class="detail-group"><div class="detail-group-title">動線設計</div><ul><li>客席動線規劃</li><li>工作動線規劃</li><li>廚房動線規劃</li><li>吧台規劃</li></ul></div>
+      <div class="detail-group"><div class="detail-group-title">工程建置</div><ul><li>工程協調</li><li>廠商整合</li><li>工程監管</li><li>軟硬體導入</li></ul></div>
+      <div class="detail-group"><div class="detail-group-title">設備規劃</div><ul><li>設備配置規劃</li><li>設備效能最佳化</li><li>一器多用規劃</li></ul></div>
+    </div>
+    <div id="svcTpl4" hidden>
+      <div class="detail-group"><div class="detail-group-title">商品開發</div><ul><li>菜色研發</li><li>商品結構規劃</li><li>菜單策略規劃</li><li>商品定價策略</li></ul></div>
+      <div class="detail-group"><div class="detail-group-title">商品升級</div><ul><li>商品價值升級</li><li>商品體驗設計</li><li>用餐體驗設計</li></ul></div>
+      <div class="detail-group"><div class="detail-group-title">資源應用</div><ul><li>在地食材應用</li><li>農產資源整合</li></ul></div>
+      <div class="detail-group"><div class="detail-group-title">餐飲系統化</div><ul><li>廚房作業流程設計</li><li>去廚師化系統建置</li><li>標準化流程建立</li><li>中央工廠導入建議</li><li>代工資源整合</li></ul></div>
+    </div>
+    <div id="svcTpl5" hidden>
+      <div class="detail-group"><div class="detail-group-title">組織管理</div><ul><li>組織架構規劃</li><li>人員管理制度</li><li>獎酬制度建議</li><li>教育訓練規劃</li></ul></div>
+      <div class="detail-group"><div class="detail-group-title">營運優化</div><ul><li>SOP建立</li><li>工作流程優化</li><li>營運銷售策略</li><li>品牌體驗優化</li></ul></div>
+      <div class="detail-group"><div class="detail-group-title">財務管理</div><ul><li>損益財務分析</li><li>成本結構優化</li></ul></div>
+      <div class="detail-group"><div class="detail-group-title">品牌成長</div><ul><li>品牌策略調整</li><li>品牌轉型規劃</li><li>商品升級規劃</li><li>展店評估規劃</li></ul></div>
+    </div>
+
   </div>
 </section>
 
@@ -1039,92 +1291,7 @@
   </div>
 </section>
 
-<!-- STATS BANNER -->
-<section id="stats">
-  <div class="stats-inner">
-    <div class="s-item">
-      <div class="s-num"><span class="counter" data-target="200">0</span><sup>+</sup></div>
-      <div class="s-lbl">服務品牌數</div>
-    </div>
-    <div class="s-item">
-      <div class="s-num"><span class="counter" data-target="2.0" data-decimal="1">0.0</span>W<sup>+</sup></div>
-      <div class="s-lbl">商品開發</div>
-    </div>
-    <div class="s-item">
-      <div class="s-num"><span class="counter" data-target="5">0</span><sup>+</sup></div>
-      <div class="s-lbl">自營品牌數</div>
-    </div>
-    <div class="s-item">
-      <div class="s-num"><span class="counter" data-target="15">0</span><sup>+</sup></div>
-      <div class="s-lbl">年餐飲實戰經驗</div>
-    </div>
-  </div>
-</section>
-
-<!-- BANNERS SLIDER -->
-<section id="banners">
-  <div class="bn-track" id="bnTrack">
-    <div class="bn-slide active">
-      <img src="新banners/碳所.png" alt="碳所音樂餐廳" />
-      <div class="bn-overlay"></div>
-      <div class="bn-title">碳所音樂餐廳</div>
-      <div class="bn-body">
-        <div class="bn-desc">炭火料理 × 現場音樂<br>用一餐，感受最純粹的感官體驗</div>
-        <a class="bn-btn" href="碳所.html">看作品</a>
-      </div>
-    </div>
-    <div class="bn-slide">
-      <img src="新banners/新象園.png" alt="新象園" />
-      <div class="bn-overlay"></div>
-      <div class="bn-title">新象園</div>
-      <div class="bn-body">
-        <div class="bn-desc">東方美學 × 精緻飲食<br>重新定義台灣傳統料理的當代樣貌</div>
-        <a class="bn-btn" href="新象園.html">看作品</a>
-      </div>
-    </div>
-    <div class="bn-slide">
-      <img src="新banners/星月天空.png" alt="星月天空" />
-      <div class="bn-overlay"></div>
-      <div class="bn-title">星月天空</div>
-      <div class="bn-body">
-        <div class="bn-desc">夜色為幕，美食為主角<br>每一桌都是難忘的記憶</div>
-        <a class="bn-btn" href="星月天空.html">看作品</a>
-      </div>
-    </div>
-    <div class="bn-slide">
-      <img src="新banners/渚橋.png" alt="渚橋" />
-      <div class="bn-overlay"></div>
-      <div class="bn-title">渚橋</div>
-      <div class="bn-body">
-        <div class="bn-desc">水岸邊的慢食哲學<br>讓時間在此刻靜止</div>
-        <a class="bn-btn" href="渚橋.html">看作品</a>
-      </div>
-    </div>
-    <div class="bn-slide">
-      <img src="新banners/清酒.png" alt="清酒" />
-      <div class="bn-overlay"></div>
-      <div class="bn-title">清酒</div>
-      <div class="bn-body">
-        <div class="bn-desc">日本清酒文化在地詮釋<br>純粹、細膩、恰到好處</div>
-        <a class="bn-btn" href="清酒.html">看作品</a>
-      </div>
-    </div>
-    <div class="bn-slide">
-      <img src="新banners/純愛.png" alt="純愛" />
-      <div class="bn-overlay"></div>
-      <div class="bn-title">純愛</div>
-      <div class="bn-body">
-        <div class="bn-desc">用料理訴說愛的語言<br>每道菜都是一封情書</div>
-        <a class="bn-btn" href="純愛.html">看作品</a>
-      </div>
-    </div>
-  </div>
-  <button class="bn-arrow bn-prev" id="bnPrev">&#8249;</button>
-  <button class="bn-arrow bn-next" id="bnNext">&#8250;</button>
-  <div class="bn-dots" id="bnDots"></div>
-</section>
-
-<!-- CASES (logo wall preserved) -->
+<!-- CASES -->
 <section id="cases">
   <div class="cases-inner">
     <div class="label"><span>服務案例</span></div>
@@ -1139,253 +1306,6 @@
       <div class="logo-item"><img src="照片素材/j8.1.jpeg" alt="新象園" /></div>
       <div class="logo-item"><img src="照片素材/j8.2.jpeg" alt="碳所音樂餐廳" /></div>
       <div class="logo-item"><img src="照片素材/j8.3.jpeg" alt="福芳酒食" /></div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services">
-  <div class="svc-inner">
-    <h2 class="sec-title">我們提供的服務</h2>
-    <div class="svc-grid">
-
-      <div class="svc-card">
-        <div class="svc-num">01</div>
-        <div class="svc-name">策略顧問</div>
-        <div class="svc-tag">找到問題，才能找到方向。</div>
-        <div class="svc-desc">每個品牌面對的課題都不同。透過市場、品牌、資源與商業模式分析，協助品牌釐清現況，建立更明確的發展方向。</div>
-        <button class="expand-btn" onclick="toggle(this)"><span class="ico">+</span>查看完整服務內容</button>
-        <div class="expand-detail">
-          <div class="detail-group">
-            <div class="detail-group-title">品牌策略</div>
-            <ul><li>創業需求訪談</li><li>品牌現況盤點</li><li>品牌定位分析</li><li>品牌發展策略</li></ul>
-          </div>
-          <div class="detail-group">
-            <div class="detail-group-title">市場分析</div>
-            <ul><li>市場調查分析</li><li>商圈評估</li><li>競品分析</li><li>消費者輪廓分析</li></ul>
-          </div>
-          <div class="detail-group">
-            <div class="detail-group-title">商業規劃</div>
-            <ul><li>商業模式評估</li><li>營收結構分析</li><li>營運風險評估</li><li>開店預算規劃</li></ul>
-          </div>
-          <div class="detail-group">
-            <div class="detail-group-title">資源盤整</div>
-            <ul><li>現有資源盤點</li><li>供應鏈資源盤整</li><li>合作資源評估</li></ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="svc-card">
-        <div class="svc-num">02</div>
-        <div class="svc-name">專案企劃</div>
-        <div class="svc-tag">把想法變成可以執行的方案。</div>
-        <div class="svc-desc">從產品企劃、文化轉譯到資源串聯，協助整合現有資源與市場機會，發展具有特色與可執行性的專案內容。</div>
-        <button class="expand-btn" onclick="toggle(this)"><span class="ico">+</span>查看完整服務內容</button>
-        <div class="expand-detail">
-          <div class="detail-group">
-            <div class="detail-group-title">專案企劃</div>
-            <ul><li>專案提案</li><li>商品企劃提案</li><li>活動企劃</li><li>聯名企劃</li><li>地方創生企劃</li><li>趨勢話題企劃</li></ul>
-          </div>
-          <div class="detail-group">
-            <div class="detail-group-title">產品開發企劃</div>
-            <ul><li>特色商品企劃</li><li>品牌專屬商品企劃</li><li>文化商品開發</li><li>地方資源商品化</li></ul>
-          </div>
-          <div class="detail-group">
-            <div class="detail-group-title">資源整合</div>
-            <ul><li>跨域資源整合</li><li>異業合作企劃</li><li>資源媒合協助</li><li>供應鏈資源串聯</li></ul>
-          </div>
-          <div class="detail-group">
-            <div class="detail-group-title">文化轉譯</div>
-            <ul><li>文化內容轉譯</li><li>地方文化企劃</li><li>風土價值開發</li></ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="svc-card">
-        <div class="svc-num">03</div>
-        <div class="svc-name">品牌設計</div>
-        <div class="svc-tag">把品牌想法變成看得見的樣子。</div>
-        <div class="svc-desc">從品牌視覺、空間氛圍到內容呈現，建立一致且具有辨識度的品牌形象。讓顧客在看見品牌的第一眼，就能感受到品牌想傳達的價值。</div>
-        <button class="expand-btn" onclick="toggle(this)"><span class="ico">+</span>查看完整服務內容</button>
-        <div class="expand-detail">
-          <div class="detail-group">
-            <div class="detail-group-title">品牌識別</div>
-            <ul><li>品牌識別系統</li><li>Logo設計</li><li>品牌設計應用規劃</li></ul>
-          </div>
-          <div class="detail-group">
-            <div class="detail-group-title">視覺規劃</div>
-            <ul><li>主視覺方向規劃</li><li>店面形象規劃</li><li>菜單設計</li><li>包裝設計</li></ul>
-          </div>
-          <div class="detail-group">
-            <div class="detail-group-title">內容設計</div>
-            <ul><li>社群視覺設計</li><li>廣告視覺設計</li><li>短影音企劃</li><li>內容策略規劃</li><li>社群經營規劃</li></ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="svc-card">
-        <div class="svc-num">04</div>
-        <div class="svc-name">空間工程</div>
-        <div class="svc-tag">讓規劃真正落地。</div>
-        <div class="svc-desc">從店面配置、動線規劃到工程執行，整合空間、設備與現場需求。兼顧效率與實際營運，讓每一分投入都發揮最大的效益。</div>
-        <button class="expand-btn" onclick="toggle(this)"><span class="ico">+</span>查看完整服務內容</button>
-        <div class="expand-detail">
-          <div class="detail-group">
-            <div class="detail-group-title">空間規劃</div>
-            <ul><li>場域規劃</li><li>店面配置規劃</li><li>客席規劃</li><li>工作區規劃</li><li>空間體驗設計</li></ul>
-          </div>
-          <div class="detail-group">
-            <div class="detail-group-title">動線設計</div>
-            <ul><li>客席動線規劃</li><li>工作動線規劃</li><li>廚房動線規劃</li><li>吧台規劃</li></ul>
-          </div>
-          <div class="detail-group">
-            <div class="detail-group-title">工程建置</div>
-            <ul><li>工程協調</li><li>廠商整合</li><li>工程監管</li><li>軟硬體導入</li></ul>
-          </div>
-          <div class="detail-group">
-            <div class="detail-group-title">設備規劃</div>
-            <ul><li>設備配置規劃</li><li>設備效能最佳化</li><li>一器多用規劃</li></ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="svc-card">
-        <div class="svc-num">05</div>
-        <div class="svc-name">料理研發</div>
-        <div class="svc-tag">把品牌特色變成顧客吃得到的體驗。</div>
-        <div class="svc-desc">我們相信，商品是品牌最直接的語言。從菜色研發、菜單策略到用餐體驗設計，結合在地資源、文化元素與市場需求，打造具有記憶點與競爭力的商品內容。</div>
-        <button class="expand-btn" onclick="toggle(this)"><span class="ico">+</span>查看完整服務內容</button>
-        <div class="expand-detail">
-          <div class="detail-group">
-            <div class="detail-group-title">商品開發</div>
-            <ul><li>菜色研發</li><li>商品結構規劃</li><li>菜單策略規劃</li><li>商品定價策略</li></ul>
-          </div>
-          <div class="detail-group">
-            <div class="detail-group-title">商品升級</div>
-            <ul><li>商品價值升級</li><li>商品體驗設計</li><li>用餐體驗設計</li></ul>
-          </div>
-          <div class="detail-group">
-            <div class="detail-group-title">資源應用</div>
-            <ul><li>在地食材應用</li><li>農產資源整合</li></ul>
-          </div>
-          <div class="detail-group">
-            <div class="detail-group-title">餐飲系統化</div>
-            <ul><li>廚房作業流程設計</li><li>去廚師化系統建置</li><li>標準化流程建立</li><li>中央工廠導入建議</li><li>代工資源整合</li></ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="svc-card">
-        <div class="svc-num">06</div>
-        <div class="svc-name">營運管理</div>
-        <div class="svc-tag">讓品牌能夠持續成長。</div>
-        <div class="svc-desc">開店只是開始。真正重要的是建立穩定且可複製的營運系統。從人員管理、制度建立到營運優化，協助品牌降低試錯成本，建立長期經營的基礎。</div>
-        <button class="expand-btn" onclick="toggle(this)"><span class="ico">+</span>查看完整服務內容</button>
-        <div class="expand-detail">
-          <div class="detail-group">
-            <div class="detail-group-title">組織管理</div>
-            <ul><li>組織架構規劃</li><li>人員管理制度</li><li>獎酬制度建議</li><li>教育訓練規劃</li></ul>
-          </div>
-          <div class="detail-group">
-            <div class="detail-group-title">營運優化</div>
-            <ul><li>SOP建立</li><li>工作流程優化</li><li>營運銷售策略</li><li>品牌體驗優化</li></ul>
-          </div>
-          <div class="detail-group">
-            <div class="detail-group-title">財務管理</div>
-            <ul><li>損益財務分析</li><li>成本結構優化</li></ul>
-          </div>
-          <div class="detail-group">
-            <div class="detail-group-title">品牌成長</div>
-            <ul><li>品牌策略調整</li><li>品牌轉型規劃</li><li>商品升級規劃</li><li>展店評估規劃</li></ul>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ADVANTAGES -->
-<section id="advantages">
-  <div class="adv-inner">
-    <div class="adv-header">
-      <div>
-        <div class="label"><span>核心優勢</span></div>
-        <h2 class="sec-title">傑弗德餐飲顧問公司<br>核心優勢</h2>
-      </div>
-      <div>
-        <p class="adv-q">為什麼我們和一般餐飲顧問不一樣？</p>
-        <p class="adv-a">我們不只是協助開店，更專注於打造一個能被記住、能持續成長的餐飲品牌。</p>
-      </div>
-    </div>
-    <div class="adv-grid">
-
-      <div class="adv-card">
-        <div class="adv-num">01</div>
-        <div class="adv-name">料理研發與體驗設計</div>
-        <div class="adv-desc">從菜色研發到用餐體驗，讓顧客記住的不只是味道，而是整個品牌。</div>
-        <button class="expand-btn" onclick="toggle(this)"><span class="ico">+</span></button>
-        <div class="adv-detail">
-          <div class="adv-item"><strong>・菜色研發與體驗設計</strong><p>從菜色研發、呈現方式到用餐流程，打造完整的品牌體驗。</p></div>
-          <div class="adv-item"><strong>・特色商品企劃</strong><p>從品牌故事、地方特色與既有資源，發展專屬於品牌的特色商品。</p></div>
-          <div class="adv-item"><strong>・商品價值升級</strong><p>透過設計、體驗與包裝策略，提升商品感知價值與市場競爭力。</p></div>
-        </div>
-      </div>
-
-      <div class="adv-card">
-        <div class="adv-num">02</div>
-        <div class="adv-name">餐飲系統化建置</div>
-        <div class="adv-desc">降低對個人能力的依賴，讓品牌更容易複製、管理與擴張。</div>
-        <button class="expand-btn" onclick="toggle(this)"><span class="ico">+</span></button>
-        <div class="adv-detail">
-          <div class="adv-item"><strong>・去廚師化 SOP</strong><p>降低品牌對單一師傅的依賴，建立可複製的標準化流程。</p></div>
-          <div class="adv-item"><strong>・設備效能最大化</strong><p>透過設備整合與一器多用規劃，提升空間與設備使用效率。</p></div>
-          <div class="adv-item"><strong>・廚房溝通整合</strong><p>懂廚房，也懂經營。協助經營者、主管與現場團隊建立共同語言。</p></div>
-        </div>
-      </div>
-
-      <div class="adv-card">
-        <div class="adv-num">03</div>
-        <div class="adv-name">品牌經營與團隊管理</div>
-        <div class="adv-desc">好的品牌來自穩定的團隊，而穩定的團隊來自正確的管理方式。</div>
-        <button class="expand-btn" onclick="toggle(this)"><span class="ico">+</span></button>
-        <div class="adv-detail">
-          <div class="adv-item"><strong>・團隊經營輔導</strong><p>從第一線到經營者，分享實際營運經驗與管理思維。</p></div>
-          <div class="adv-item"><strong>・長期顧問合作</strong><p>不只提供建議，更持續陪伴品牌面對不同階段的挑戰與成長。</p></div>
-        </div>
-      </div>
-
-      <div class="adv-card">
-        <div class="adv-num">04</div>
-        <div class="adv-name">產地與資源串聯</div>
-        <div class="adv-desc">讓品牌不只是使用食材，而是善用地方資源創造差異化。</div>
-        <button class="expand-btn" onclick="toggle(this)"><span class="ico">+</span></button>
-        <div class="adv-detail">
-          <div class="adv-item"><strong>・農產資源整合</strong><p>結合產地、生產者與產業輔導資源，開發具有市場特色的商品與體驗。</p></div>
-        </div>
-      </div>
-
-      <div class="adv-card">
-        <div class="adv-num">05</div>
-        <div class="adv-name">文化與話題創造</div>
-        <div class="adv-desc">把文化變成商品，把故事變成顧客願意分享的體驗。</div>
-        <button class="expand-btn" onclick="toggle(this)"><span class="ico">+</span></button>
-        <div class="adv-detail">
-          <div class="adv-item"><strong>・文化商品開發</strong><p>透過地方文化、風土故事與跨域資源整合，創造具有市場辨識度的品牌內容。</p></div>
-          <div class="adv-item"><strong>・趨勢話題企劃</strong><p>從市場趨勢、農產議題到社群話題，快速轉化成品牌內容與商品企劃。</p></div>
-        </div>
-      </div>
-
-      <div class="adv-card">
-        <div class="adv-num">06</div>
-        <div class="adv-name">自營品牌實戰驗證</div>
-        <div class="adv-desc">很多顧問教開店，但沒有自己的店。我們持續經營自己的品牌，也持續驗證自己的方法。</div>
-        <button class="expand-btn" onclick="toggle(this)"><span class="ico">+</span></button>
-        <div class="adv-detail">
-          <div class="adv-item"><strong>・自營品牌實戰經驗</strong><p>橫跨小吃、台菜、法餐與飲品品牌，從第一線經營中累積實際經驗與市場驗證。</p></div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -1475,14 +1395,35 @@
     obs.observe(section);
   })();
 
-  // expand / collapse
-  function toggle(btn) {
-    const card = btn.closest('.svc-card, .adv-card');
-    const detail = btn.nextElementSibling;
-    const ico = btn.querySelector('.ico');
-    const open = detail.classList.toggle('open');
-    ico.textContent = open ? '×' : '+';
-    if (card) card.classList.toggle('open', open);
+  // services timeline
+  const svcMeta = [
+    { num: '01', name: '策略顧問', tag: '找到問題，才能找到方向。' },
+    { num: '02', name: '專案企劃', tag: '把想法變成可以執行的方案。' },
+    { num: '03', name: '品牌設計', tag: '把品牌想法變成看得見的樣子。' },
+    { num: '04', name: '空間工程', tag: '讓規劃真正落地。' },
+    { num: '05', name: '料理研發', tag: '把品牌特色變成顧客吃得到的體驗。' },
+    { num: '06', name: '營運管理', tag: '讓品牌能夠持續成長。' },
+  ];
+  let curSvc = -1;
+
+  function openSvc(idx) {
+    const panel = document.getElementById('svcPanel');
+    const nodes = document.querySelectorAll('.svc-node');
+    if (curSvc === idx) { closeSvc(); return; }
+    curSvc = idx;
+    nodes.forEach((n, i) => n.classList.toggle('open', i === idx));
+    document.getElementById('svcPanelNum').textContent = svcMeta[idx].num;
+    document.getElementById('svcPanelName').textContent = svcMeta[idx].name;
+    document.getElementById('svcPanelTag').textContent = svcMeta[idx].tag;
+    document.getElementById('svcPanelBody').innerHTML = document.getElementById('svcTpl' + idx).innerHTML;
+    panel.classList.add('open');
+    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function closeSvc() {
+    curSvc = -1;
+    document.querySelectorAll('.svc-node').forEach(n => n.classList.remove('open'));
+    document.getElementById('svcPanel').classList.remove('open');
   }
 
   // banners slider
