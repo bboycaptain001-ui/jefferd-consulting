@@ -148,7 +148,7 @@
       background: var(--gold);
     }
     .label span {
-      font-size: 9px;
+      font-size: 10.8px;
       letter-spacing: .36em;
       color: var(--gold);
       text-transform: uppercase;
@@ -265,7 +265,7 @@
       margin-bottom: 8px;
     }
     .p-role {
-      font-size: 11px;
+      font-size: 12.1px;
       letter-spacing: .16em;
       color: var(--t3);
       margin-bottom: 32px;
@@ -291,7 +291,7 @@
       margin-bottom: 5px;
     }
     .p-stat-num sup { font-size: .4em; color: var(--t3); vertical-align: super; }
-    .p-stat-lbl { font-size: 10px; letter-spacing: .12em; color: var(--t3); }
+    .p-stat-lbl { font-size: 11px; letter-spacing: .12em; color: var(--t3); }
     .p-divider { width: 28px; height: 1px; background: var(--gold); margin-bottom: 20px; }
     .p-sub {
       font-size: 13px;
@@ -543,12 +543,6 @@
       background: #fff;
       transform: scale(1.3);
     }
-    @media(max-width: 960px) {
-      .cases-inner { padding: 80px 48px 60px; }
-      .logo-wall { grid-template-columns: repeat(2, 1fr); }
-      .logo-item { aspect-ratio: unset; min-height: 110px; padding: 28px 20px; }
-      .logo-item img { max-height: 72px; }
-    }
 
     @media(max-width:768px) {
       #banners { height: 58vw; min-height: 320px; }
@@ -559,41 +553,6 @@
       .bn-btn { bottom: 56px; padding: 10px 32px; font-size: 12px; }
       .bn-desc { font-size: 12px; letter-spacing: .08em; }
     }
-
-    /* ── CASES (logo wall — structure preserved) ── */
-    #cases {
-      background: var(--bg);
-      border-top: 1px solid var(--rule);
-      overflow: hidden;
-    }
-    .cases-inner { padding: 100px 88px 80px; overflow: hidden; }
-    .logo-wall {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid var(--rule);
-      border-left: 1px solid var(--rule);
-      margin-top: 52px;
-      width: 100%;
-    }
-    .logo-item {
-      border-right: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 44px 52px;
-      aspect-ratio: 2.4/1;
-      background: #000;
-      min-width: 0;
-    }
-    .logo-item img {
-      max-width: 75%;
-      max-height: 94px;
-      object-fit: contain;
-      filter: grayscale(100%) opacity(.65);
-      transition: filter .4s ease;
-    }
-    .logo-item:hover img { filter: grayscale(0%) opacity(1); }
 
     /* ── SERVICES (timeline) ── */
     #services {
@@ -673,7 +632,7 @@
     }
     .svc-node.open .svc-node-name { color: var(--gold); }
     .svc-node-keys {
-      font-size: 11px;
+      font-size: 14.3px;
       color: var(--t3);
       line-height: 1.9;
     }
@@ -734,7 +693,7 @@
       margin-bottom: 0;
     }
     .detail-group-title {
-      font-size: 10px;
+      font-size: 14px;
       letter-spacing: .22em;
       color: var(--gold);
       margin-bottom: 8px;
@@ -742,7 +701,7 @@
     }
     .detail-group ul { list-style: none; }
     .detail-group li {
-      font-size: 12px;
+      font-size: 14.23px;
       color: var(--t2);
       line-height: 2;
       display: flex;
@@ -937,14 +896,6 @@
       .s-item { padding: 16px 20px; border-left: none !important; border-bottom: 1px solid var(--rule); }
       .s-item:nth-child(odd) { border-right: 1px solid var(--rule); }
 
-      #cases { overflow: hidden; max-width: 100vw; }
-      .cases-inner { padding: 64px 0 48px; overflow: hidden; }
-      .cases-inner .label,
-      .cases-inner .sec-title { padding-left: 24px; }
-      .logo-wall { grid-template-columns: repeat(2, 1fr); margin-top: 36px; width: 100%; max-width: 100%; }
-      .logo-item { padding: 24px 14px; aspect-ratio: unset; min-height: 100px; overflow: hidden; }
-      .logo-item img { max-height: 62px; }
-
       .svc-inner { padding: 64px 24px 48px; }
       .svc-timeline { grid-template-columns: repeat(3, 1fr); gap: 32px 0; }
       .svc-timeline::before { display: none; }
@@ -968,8 +919,8 @@
 <nav id="nav">
   <a href="#" class="nav-logo"><em>傑弗德</em>餐飲顧問公司</a>
   <ul>
-    <li><a href="#banners">案例</a></li>
-    <li><a href="#services">服務</a></li>
+    <li><a href="#banners">顧問案例</a></li>
+    <li><a href="#services">服務項目</a></li>
     <li><a href="#principal">主理人</a></li>
     <li><a href="#brands">自有品牌</a></li>
   </ul>
@@ -979,8 +930,8 @@
 
 <!-- MOBILE MENU -->
 <div id="mob-menu">
-  <a href="#banners"    onclick="closeMob()">案例</a>
-  <a href="#services"   onclick="closeMob()">服務</a>
+  <a href="#banners"    onclick="closeMob()">顧問案例</a>
+  <a href="#services"   onclick="closeMob()">服務項目</a>
   <a href="#principal"  onclick="closeMob()">主理人</a>
   <a href="#brands"     onclick="closeMob()">自有品牌</a>
   <a href="#cta"        onclick="closeMob()">立即諮詢</a>
@@ -1032,18 +983,18 @@
       </div>
     </div>
     <div class="bn-slide">
-      <img src="新banners/渚橋.png" alt="渚橋" />
+      <img src="新banners/渚橋.png" alt="Kuroro Aqua浪潛水海洋園區（渚橋）" />
       <div class="bn-overlay"></div>
-      <div class="bn-title">渚橋</div>
+      <div class="bn-title">Kuroro Aqua浪潛水海洋園區（渚橋）</div>
       <div class="bn-body">
         <div class="bn-desc">水岸邊的慢食哲學<br>讓時間在此刻靜止</div>
         <a class="bn-btn" href="渚橋.html">看作品</a>
       </div>
     </div>
     <div class="bn-slide">
-      <img src="新banners/清酒.png" alt="清酒" />
+      <img src="新banners/清酒.png" alt="台灣菸酒公司" />
       <div class="bn-overlay"></div>
-      <div class="bn-title">清酒</div>
+      <div class="bn-title">台灣菸酒公司</div>
       <div class="bn-body">
         <div class="bn-desc">日本清酒文化在地詮釋<br>純粹、細膩、恰到好處</div>
         <a class="bn-btn" href="清酒.html">看作品</a>
@@ -1058,6 +1009,51 @@
         <a class="bn-btn" href="純愛.html">看作品</a>
       </div>
     </div>
+    <div class="bn-slide">
+      <img src="新banners/北非North Africa.png" alt="北非North Africa" />
+      <div class="bn-overlay"></div>
+      <div class="bn-title">北非North Africa</div>
+      <div class="bn-body">
+        <div class="bn-desc">異域香料 × 北非風情<br>用一口料理，展開一場異國旅程</div>
+        <a class="bn-btn" href="北非North Africa.html">看作品</a>
+      </div>
+    </div>
+    <div class="bn-slide">
+      <img src="新banners/碳少年.png" alt="碳少年" />
+      <div class="bn-overlay"></div>
+      <div class="bn-title">碳少年</div>
+      <div class="bn-body">
+        <div class="bn-desc">炭火直烤 × 青春活力<br>用最直接的火候，燒出最鮮明的滋味</div>
+        <a class="bn-btn" href="碳少年.html">看作品</a>
+      </div>
+    </div>
+    <div class="bn-slide">
+      <img src="新banners/新篇章.png" alt="新篇章" />
+      <div class="bn-overlay"></div>
+      <div class="bn-title">新篇章</div>
+      <div class="bn-body">
+        <div class="bn-desc">品牌轉型的新起點<br>用料理寫下屬於自己的下一頁</div>
+        <a class="bn-btn" href="新篇章.html">看作品</a>
+      </div>
+    </div>
+    <div class="bn-slide">
+      <img src="新banners/覓海小徑.png" alt="覓海小徑" />
+      <div class="bn-overlay"></div>
+      <div class="bn-title">覓海小徑</div>
+      <div class="bn-body">
+        <div class="bn-desc">沿著海味前行<br>在每一道料理裡，遇見大海的日常</div>
+        <a class="bn-btn" href="覓海小徑.html">看作品</a>
+      </div>
+    </div>
+    <div class="bn-slide">
+      <img src="新banners/福芳.png" alt="福芳" />
+      <div class="bn-overlay"></div>
+      <div class="bn-title">福芳</div>
+      <div class="bn-body">
+        <div class="bn-desc">福氣好味 × 台灣古早味<br>把家鄉的味道，端上每一桌</div>
+        <a class="bn-btn" href="福芳.html">看作品</a>
+      </div>
+    </div>
   </div>
   <button class="bn-arrow bn-prev" id="bnPrev">&#8249;</button>
   <button class="bn-arrow bn-next" id="bnNext">&#8250;</button>
@@ -1069,15 +1065,15 @@
   <div class="stats-inner">
     <div class="s-item">
       <div class="s-num"><span class="counter" data-target="200">0</span><sup>+</sup></div>
-      <div class="s-lbl">服務品牌數</div>
+      <div class="s-lbl">間服務品牌數</div>
     </div>
     <div class="s-item">
       <div class="s-num"><span class="counter" data-target="2.0" data-decimal="1">0.0</span>W<sup>+</sup></div>
-      <div class="s-lbl">商品開發</div>
+      <div class="s-lbl">項商品開發</div>
     </div>
     <div class="s-item">
       <div class="s-num"><span class="counter" data-target="5">0</span><sup>+</sup></div>
-      <div class="s-lbl">自營品牌數</div>
+      <div class="s-lbl">間自營品牌數</div>
     </div>
     <div class="s-item">
       <div class="s-num"><span class="counter" data-target="15">0</span><sup>+</sup></div>
@@ -1228,14 +1224,14 @@
         </div>
         <div class="p-stat" style="grid-column:1/-1">
           <div class="p-stat-num">200<sup>+</sup></div>
-          <div class="p-stat-lbl">餐飲品牌輔導經驗</div>
+          <div class="p-stat-lbl">間餐飲品牌輔導經驗</div>
         </div>
       </div>
       <div class="p-divider"></div>
       <p class="p-sub">一個真正經營過餐廳的餐飲顧問</p>
       <div class="p-bio">
         <p>曾任澳洲 Pluto Investment Group 行政總廚、奇美集團旗下兩沛餐飲事業行政主廚。</p>
-        <p>歷經國際餐飲集團、連鎖品牌、中央廚房、餐飲顧問與品牌經營，參與 200+ 餐飲品牌的規劃、開店、轉型與營運輔導。</p>
+        <p>歷經國際餐飲集團、連鎖品牌、中央廚房、餐飲顧問與品牌經營，參與 200+ 間餐飲品牌的規劃、開店、轉型與營運輔導。</p>
         <p>從廚師、主廚、經營者到顧問，我們更懂餐飲品牌每個階段會遇到的問題。</p>
       </div>
     </div>
@@ -1270,7 +1266,7 @@
     <div class="brand-col">
       <img src="jeff/c3.jpeg" class="brand-bg" alt="冷飲部" />
       <div class="brand-overlay"></div>
-      <img src="jeff/l3.png" class="brand-logo" alt="" />
+      <img src="jeff/l3.png" class="brand-logo" alt="" style="height:36px" />
       <div class="brand-info">
         <div class="brand-name">冷飲部</div>
         <div class="brand-type">風土飲品</div>
@@ -1288,25 +1284,6 @@
   </div>
   <div class="brands-note">
     <p>橫跨小吃、飲品、台菜與法餐等不同餐飲型態，從品牌創立、商品研發到實際營運，持續透過自有品牌驗證每一個策略與方法。讓顧問經驗不只是理論，而是真正來自市場第一線的實戰累積。</p>
-  </div>
-</section>
-
-<!-- CASES -->
-<section id="cases">
-  <div class="cases-inner">
-    <div class="label"><span>服務案例</span></div>
-    <h2 class="sec-title">輔導品牌案例</h2>
-    <div class="logo-wall">
-      <div class="logo-item"><img src="照片素材/j6.1.jpeg" alt="豐生茶館" /></div>
-      <div class="logo-item"><img src="照片素材/j6.2.png"  alt="星月天空" /></div>
-      <div class="logo-item"><img src="照片素材/j6.3.jpeg" alt="野餐日" /></div>
-      <div class="logo-item"><img src="照片素材/j7.1.jpeg" alt="福芳臺菜" /></div>
-      <div class="logo-item"><img src="照片素材/j7.2.jpeg" alt="健康那件小事" /></div>
-      <div class="logo-item"><img src="照片素材/j7.3.jpeg" alt="萬客什鍋" /></div>
-      <div class="logo-item"><img src="照片素材/j8.1.jpeg" alt="新象園" /></div>
-      <div class="logo-item"><img src="照片素材/j8.2.jpeg" alt="碳所音樂餐廳" /></div>
-      <div class="logo-item"><img src="照片素材/j8.3.jpeg" alt="福芳酒食" /></div>
-    </div>
   </div>
 </section>
 

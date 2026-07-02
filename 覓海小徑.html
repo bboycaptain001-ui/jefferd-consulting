@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>覓海小徑 — 傑弗德餐飲顧問</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Noto+Serif+TC:wght@300;400&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0e0c0a; --bg-2: #141210;
+    --text: #f0ece4; --t2: #a89f94; --t3: #5c5650;
+    --gold: #c9a86c; --rule: #242018;
+  }
+  body { background: var(--bg); color: var(--text); font-family: 'Noto Serif TC', serif; min-height: 100vh; }
+  .pg-header {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; gap: 24px;
+    padding: 0 48px; height: 64px;
+  }
+  .pg-back {
+    display: flex; align-items: center; gap: 8px;
+    color: var(--t2); font-size: 12px; letter-spacing: .18em;
+    text-decoration: none; transition: color .3s;
+  }
+  .pg-back:hover { color: var(--text); }
+  .pg-back svg { width: 16px; height: 16px; }
+  .pg-divider { width: 1px; height: 20px; background: var(--rule); }
+  .pg-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; letter-spacing: .1em; }
+  .gallery { padding: 64px 48px 96px; columns: 2; column-gap: 16px; }
+  .gallery-item { break-inside: avoid; margin-bottom: 16px; overflow: hidden; }
+  .gallery-item img { width: 100%; height: auto; display: block; transition: transform .6s ease; }
+  .gallery-item:hover img { transform: scale(1.02); }
+  @media(max-width: 768px) {
+    .pg-header { padding: 0 24px; }
+    .gallery { padding: 32px 16px 64px; columns: 1; }
+    .gallery-item { margin-bottom: 12px; }
+  }
+</style>
+</head>
+<body>
+<header class="pg-header">
+  <a class="pg-back" href="index.html">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M10 3L5 8l5 5"/></svg>
+    返回
+  </a>
+  <div class="pg-divider"></div>
+  <div class="pg-title">覓海小徑</div>
+</header>
+<main class="gallery">
+  <div class="gallery-item"><img src="案例牆/覓海小徑/IMG_0263.jpg" alt="" /></div>
+  <div class="gallery-item"><img src="案例牆/覓海小徑/IMG_0264.jpg" alt="" /></div>
+  <div class="gallery-item"><img src="案例牆/覓海小徑/IMG_0265.jpg" alt="" /></div>
+  <div class="gallery-item"><img src="案例牆/覓海小徑/IMG_0266.jpg" alt="" /></div>
+</main>
+</body>
+</html>
