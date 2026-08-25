@@ -373,6 +373,7 @@ body.nav-open { overflow: hidden; }
     gap: 16px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    scroll-padding-left: 22px;
     margin: var(--sp-5) -22px 0;
     padding: 0 22px 8px;
     -webkit-overflow-scrolling: touch;
