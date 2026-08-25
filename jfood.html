@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>J.Food 傑夫料理人｜雲林斗六 義法無菜單私廚</title>
+<meta name="description" content="J.Food 傑夫料理人——主廚黃韋誌返鄉創立，以義法技法詮釋雲林在地食材的無菜單料理。雲林斗六巷弄內開放式廚房，全預約制，僅12席。提供私廚餐會、外燴、廚藝教學。" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+TC:wght@300;400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/style.css" />
+<style>
+  :root { --jf-ink: #333c49; }
+
+  #jf-hero { position:relative; height:96vh; min-height:660px; display:flex; align-items:center; overflow:hidden; }
+  #jf-hero .bg { position:absolute; inset:0; }
+  #jf-hero .bg img { width:100%; height:100%; object-fit:cover; }
+  #jf-hero .bg::after { content:''; position:absolute; inset:0; background:linear-gradient(100deg, rgba(30,34,41,.86) 0%, rgba(30,34,41,.5) 48%, rgba(30,34,41,.15) 78%); }
+  #jf-hero .inner { position:relative; z-index:2; max-width:640px; padding:0 44px; color:#f4efe4; }
+  #jf-hero .mark { height:64px; margin-bottom:26px; opacity:.96; }
+  #jf-hero .eyebrow { font-family:'Noto Serif TC',serif; font-size:12px; letter-spacing:.32em; color:#cfa96b; margin-bottom:16px; }
+  #jf-hero h1 { font-size:clamp(28px,4vw,44px); line-height:1.55; color:#f8f4ea; font-weight:500; }
+  #jf-hero .sub { margin-top:20px; color:#d9d2c2; font-size:15px; line-height:1.9; max-width:480px; }
+  #jf-hero .tags { margin-top:26px; display:flex; gap:10px; flex-wrap:wrap; }
+  #jf-hero .tag { font-size:11.5px; letter-spacing:.08em; color:#e8e1d2; border:1px solid rgba(244,239,228,.35); padding:6px 14px; }
+  #jf-hero .btns { margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; }
+
+  .quote-block { padding:100px 0 90px; text-align:center; }
+  .quote-block blockquote { font-family:'Noto Serif TC',serif; font-size:clamp(22px,2.6vw,30px); line-height:1.8; color:var(--jf-ink); max-width:760px; margin:0 auto; }
+  .quote-block cite { display:block; margin-top:22px; font-style:normal; font-size:13px; letter-spacing:.1em; color:var(--gold-2); }
+
+  .story { padding:20px 0 96px; }
+  .story-grid { display:grid; grid-template-columns:.85fr 1.15fr; gap:60px; align-items:center; }
+  .story-photo { aspect-ratio:4/5; overflow:hidden; }
+  .story-photo img { width:100%; height:100%; object-fit:cover; }
+  .story h2 { margin-top:14px; }
+  .story p { color:var(--t2); margin-top:14px; }
+  .story .story-sign { margin-top:24px; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:20px; color:var(--jf-ink); }
+  @media (max-width:860px){ .story-grid{ grid-template-columns:1fr; } }
+
+  .philosophy { background:var(--jf-ink); color:#eee9db; padding:96px 0; }
+  .philosophy .wrap { display:grid; grid-template-columns:1fr 1fr; gap:50px; }
+  .philosophy .label span { color:#d9b479; }
+  .philosophy .label::before { background:#d9b479; }
+  .philosophy h2 { color:#f6f2e6; }
+  .philosophy p { color:#c6c1b3; margin-top:14px; }
+  .phil-points { list-style:none; margin-top:10px; }
+  .phil-points li { padding:20px 0; border-top:1px solid rgba(244,239,228,.15); }
+  .phil-points li:last-child { border-bottom:1px solid rgba(244,239,228,.15); }
+  .phil-points .pp-t { font-family:'Noto Serif TC',serif; font-size:16px; color:#f6f2e6; }
+  .phil-points .pp-d { margin-top:6px; font-size:13.5px; color:#a9a498; }
+  @media (max-width:860px){ .philosophy .wrap{ grid-template-columns:1fr; } }
+
+  .menu-section { padding:96px 0; }
+  .menu-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); margin-top:44px; border:1px solid var(--rule); }
+  .menu-item { background:var(--paper); padding:34px 30px; }
+  .menu-item .mi-course { font-size:11px; letter-spacing:.2em; color:var(--gold-2); }
+  .menu-item .mi-name { margin-top:12px; font-family:'Noto Serif TC',serif; font-size:18px; color:var(--ink); line-height:1.6; }
+  .menu-item .mi-note { margin-top:10px; font-size:13px; color:var(--t2); line-height:1.7; }
+  @media (max-width:860px){ .menu-grid{ grid-template-columns:1fr; } }
+  .menu-foot { margin-top:28px; font-size:13px; color:var(--t3); }
+
+  .dine-info { padding:0 0 96px; }
+  .di-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); }
+  .di-item { background:var(--paper-2); padding:30px 26px; }
+  .di-item .di-lbl { font-size:11px; letter-spacing:.16em; color:var(--gold-2); }
+  .di-item .di-val { margin-top:10px; font-family:'Noto Serif TC',serif; font-size:16px; color:var(--ink); line-height:1.6; }
+  @media (max-width:860px){ .di-grid{ grid-template-columns:repeat(2,1fr); } }
+
+  .services-mini { padding:0 0 96px; }
+  .sm-list { display:grid; grid-template-columns:repeat(5,1fr); gap:16px; margin-top:40px; }
+  .sm-item { border:1px solid var(--rule); padding:26px 18px; text-align:center; }
+  .sm-item .sm-name { font-family:'Noto Serif TC',serif; font-size:14.5px; color:var(--ink); }
+  .sm-item .sm-d { margin-top:8px; font-size:12px; color:var(--t2); line-height:1.6; }
+  @media (max-width:900px){ .sm-list{ grid-template-columns:repeat(2,1fr); } }
+
+  #jf-cta { padding:100px 0; text-align:center; background:var(--paper-2); border-top:1px solid var(--rule); }
+  #jf-cta img.mark { height:40px; margin:0 auto 24px; opacity:.85; }
+  #jf-cta h2 { font-size:clamp(24px,3.2vw,32px); line-height:1.6; }
+  #jf-cta p { margin-top:14px; color:var(--t2); }
+  #jf-cta .btnwrap { margin-top:30px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo"><span><em style="font-style:normal;color:var(--gold-2)">傑弗德</em> 餐飲顧問公司</span></a>
+  <ul>
+    <li><a href="brands.html">自有品牌</a></li>
+    <li><a href="jfood.html" class="active">J.Food</a></li>
+    <li><a href="cases.html">顧問案例</a></li>
+    <li><a href="services.html">服務項目</a></li>
+    <li><a href="contact.html">聯絡我們</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">立即諮詢</a>
+  <button id="ham" aria-label="選單"><span></span><span></span><span></span></button>
+</nav>
+
+<div id="mob-menu">
+  <a href="brands.html">自有品牌</a>
+  <a href="jfood.html">J.Food 傑夫料理人</a>
+  <a href="cases.html">顧問案例</a>
+  <a href="services.html">服務項目</a>
+  <a href="contact.html">聯絡我們</a>
+</div>
+
+<main>
+
+<section id="jf-hero">
+  <div class="bg"><img src="jeff/c4.jpeg" alt="J.Food 傑夫料理人 開放式廚房" /></div>
+  <div class="inner">
+    <img class="mark" src="assets/img/logo/jfood-logo-white.png" alt="J.Food Savorium" />
+    <div class="eyebrow">傑弗德旗下品牌 · 義法無菜單私廚</div>
+    <h1 class="serif">用一餐的時間，<br>說一則雲林的故事。</h1>
+    <p class="sub">主廚黃韋誌返鄉創立，以義式、法式技法詮釋雲林四季風土食材，在全開放式廚房裡，邊做菜邊為你說菜。</p>
+    <div class="tags">
+      <span class="tag">無菜單料理</span>
+      <span class="tag">全預約制</span>
+      <span class="tag">僅 12 席</span>
+      <span class="tag">雲林斗六</span>
+    </div>
+    <div class="btns">
+      <a href="contact.html" class="btn on-dark">預約用餐 →</a>
+      <a href="https://www.instagram.com/chef.jefffood/" target="_blank" rel="noopener" class="btn on-dark">看 Instagram</a>
+    </div>
+  </div>
+</section>
+
+<section class="quote-block reveal">
+  <div class="wrap">
+    <blockquote>「想了解一個地方，最直接的方式，<br class="hide-sm">就是地方美食與它的來源。」</blockquote>
+    <cite>— 黃韋誌 Jeff，J.Food 傑夫料理人 主廚</cite>
+  </div>
+</section>
+
+<section class="story">
+  <div class="wrap story-grid">
+    <div class="story-photo reveal"><img src="照片素材/j3.jpg" alt="黃韋誌 Jeff" /></div>
+    <div class="reveal">
+      <div class="label"><span>主廚故事</span></div>
+      <h2 class="serif">從體保生到主廚，<br>繞了一圈才發現，答案在家鄉。</h2>
+      <p>黃韋誌原本是體育保送生，一場車禍意外，讓他轉而走進廚房、投身廚藝。此後他的廚師生涯橫跨台灣南北與海外，曾任澳洲 Pluto Investment Group 行政總廚、奇美集團旗下兩沛餐飲事業行政主廚，歷練過國際餐飲集團與連鎖品牌的完整體系。</p>
+      <p>走過這一圈，他選擇回到雲林，用累積十五年以上的廚藝，重新詮釋自己長大的這片土地——這就是 J.Food 傑夫料理人的起點。</p>
+      <p>品牌一度沉澱、暫停營運，2026 年以「品味精神，重新出發」正式回歸，繼續在雲林斗六的巷弄裡，用料理接待每一位願意預約而來的客人。</p>
+      <div class="story-sign">Jeff Huang</div>
+    </div>
+  </div>
+</section>
+
+<section class="philosophy">
+  <div class="wrap">
+    <div>
+      <div class="label"><span>料理理念</span></div>
+      <h2 class="serif">以義法之味，<br>體現雲林是農業首都。</h2>
+      <p>沒有美好的食材，哪來美味的佳餚。J.Food 用義式、法式的技法，處理雲林四季當令的在地食材——菜色隨季節更換配置，不追求固定菜單，而是讓土地決定餐桌上會出現什麼。</p>
+      <p>全開放式廚房讓每一位客人都能看見料理從食材到成品的過程，主廚會親自「說菜」，告訴你這道菜的食材源頭與烹調邏輯，而不只是端上桌。</p>
+    </div>
+    <ul class="phil-points">
+      <li><div class="pp-t">風土食材</div><div class="pp-d">與雲林在地小農、漁港合作，隨季節調整食材配置</div></li>
+      <li><div class="pp-t">義法技法</div><div class="pp-d">低溫熟成、慢燉、燻製等技法，重新詮釋台灣家鄉味</div></li>
+      <li><div class="pp-t">開放式廚房</div><div class="pp-d">主廚親自說菜，讓每道菜的來歷都被看見、被理解</div></li>
+      <li><div class="pp-t">全預約制</div><div class="pp-d">室內8席、戶外4席，僅接待12位客人的親密尺度</div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="menu-section">
+  <div class="wrap">
+    <div class="label reveal"><span>精選風味</span></div>
+    <h2 class="sec-title reveal">從前菜到甜點的<br>雲林風土敘事</h2>
+    <div class="menu-grid reveal">
+      <div class="menu-item"><div class="mi-course">前菜</div><div class="mi-name">低溫熟成軟絲<br>海膽美乃滋 · 柚子秋葵醬</div><div class="mi-note">以低溫熟成處理海鮮質地，搭配自製醬汁提出鮮甜層次</div></div>
+      <div class="menu-item"><div class="mi-course">主食</div><div class="mi-name">口湖蛤蠣燉飯</div><div class="mi-note">雲林口湖在地蛤蠣，義式燉飯手法呈現海味與米香</div></div>
+      <div class="menu-item"><div class="mi-course">主食</div><div class="mi-name">干貝墨魚燉飯<br>薄削烏魚子</div><div class="mi-note">墨魚汁燉飯上覆烏魚子薄片，口感如餅乾般酥脆</div></div>
+      <div class="menu-item"><div class="mi-course">主菜</div><div class="mi-name">桂丁雞菲力</div><div class="mi-note">台灣桂丁雞取菲力部位，法式手法鎖住肉質鮮嫩</div></div>
+      <div class="menu-item"><div class="mi-course">主菜</div><div class="mi-name">冷燻鮭魚<br>溫泉蛋</div><div class="mi-note">自製冷燻手法處理鮭魚，佐溫泉蛋與特調醬汁</div></div>
+      <div class="menu-item"><div class="mi-course">甜點</div><div class="mi-name">豆漿油條冰淇淋</div><div class="mi-note">台式早餐記憶轉譯成冰淇淋，傳統與創意的交會</div></div>
+    </div>
+    <p class="menu-foot reveal">菜色隨季節與食材更換，實際出餐內容以現場「說菜」為準。飲食禁忌與過敏原請於預約時告知。</p>
+  </div>
+</section>
+
+<section class="dine-info">
+  <div class="wrap">
+    <div class="label reveal"><span>用餐資訊</span></div>
+    <h2 class="sec-title reveal" style="margin-bottom:36px">預約須知</h2>
+    <div class="di-grid reveal">
+      <div class="di-item"><div class="di-lbl">形式</div><div class="di-val">無菜單料理<br>全預約制</div></div>
+      <div class="di-item"><div class="di-lbl">席位</div><div class="di-val">室內 8 席<br>戶外 4 席</div></div>
+      <div class="di-item"><div class="di-lbl">價位帶</div><div class="di-val">每人 NT$1,000 / 1,800 / 3,600<br>另收一成服務費</div></div>
+      <div class="di-item"><div class="di-lbl">地點</div><div class="di-val">雲林縣斗六市<br>建成路一巷2號3樓</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="services-mini">
+  <div class="wrap">
+    <div class="label reveal"><span>不只是內用</span></div>
+    <h2 class="sec-title reveal" style="margin-bottom:10px">其他服務項目</h2>
+    <p class="reveal" style="color:var(--t2);max-width:560px">除了店內無菜單料理，J.Food 也承接餐飲業界的專業需求。</p>
+    <div class="sm-list reveal">
+      <div class="sm-item"><div class="sm-name">私廚餐會</div><div class="sm-d">到府或包場的客製化用餐體驗</div></div>
+      <div class="sm-item"><div class="sm-name">外燴料理</div><div class="sm-d">活動、聚會場合的餐飲規劃</div></div>
+      <div class="sm-item"><div class="sm-name">餐飲顧問</div><div class="sm-d">品牌與菜色開發諮詢</div></div>
+      <div class="sm-item"><div class="sm-name">廚藝教學</div><div class="sm-d">技法與料理邏輯的實作課程</div></div>
+      <div class="sm-item"><div class="sm-name">品項研發</div><div class="sm-d">為其他餐飲品牌開發專屬菜色</div></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<section id="jf-cta" class="reveal">
+  <div class="wrap">
+    <img class="mark" src="assets/img/logo/jfood-logo-navy.png" alt="" />
+    <h2 class="serif">位子不多，故事很長。<br>想預約，請提早告訴我們。</h2>
+    <p>透過 Facebook 或 Instagram 私訊即可預約，我們會與您確認用餐日期、人數與飲食禁忌。</p>
+    <div class="btnwrap">
+      <a href="https://www.facebook.com/ChefJ.Food/" target="_blank" rel="noopener" class="btn solid">Facebook 預約</a>
+      <a href="https://www.instagram.com/chef.jefffood/" target="_blank" rel="noopener" class="btn">Instagram 私訊</a>
+    </div>
+  </div>
+</section>
+
+<footer id="footer">
+  <div class="wrap">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <div class="serif" style="font-size:16px;color:var(--ink)">傑弗德餐飲顧問公司</div>
+        <p style="margin-top:10px">品牌｜商品｜空間｜營運｜行銷<br>從料理研發到品牌落地，陪你走完整段路。</p>
+      </div>
+      <div class="ft-cols">
+        <div class="ft-col">
+          <h4>網站導覽</h4>
+          <a href="brands.html">自有品牌</a>
+          <a href="jfood.html">J.Food 傑夫料理人</a>
+          <a href="cases.html">顧問案例</a>
+          <a href="services.html">服務項目</a>
+        </div>
+        <div class="ft-col">
+          <h4>聯絡方式</h4>
+          <a href="contact.html">聯絡我們</a>
+          <a href="https://www.facebook.com/ChefJ.Food/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/chef.jefffood/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="ft-copy">© 2026 傑弗德餐飲顧問公司 Jefferd Consulting</div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

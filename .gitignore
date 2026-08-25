@@ -2,3 +2,10 @@
 **/.DS_Store
 Thumbs.db
 _原始圖片備份/
+.vercel
+
+# 內部工作紀錄與原始素材，不進入部署（無 vercel.json 時 repo 內任何檔案都會被直接服務）
+worklog.md
+DESIGN_BLUEPRINT_v1.0.md
+APEX_REVISION_PLAN_*.md
+官網五大案例_20260825/
