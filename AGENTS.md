@@ -42,8 +42,6 @@
 | `api/inquiry.js` | 聯絡表單寄信功能（伺服器端） |
 | `vercel.json` | 舊網址轉址設定 |
 
-`assets/style.css`、`assets/black-theme.css` 目前沒有頁面使用，不要拿來套用新頁面。
-
 ---
 
 ## 三、可以改、小心改、不要動
@@ -60,6 +58,7 @@
 **不要動**
 - `api/inquiry.js`：聯絡表單寄信功能。
 - `vercel.json` 裡既有的轉址。
+- `.vercelignore`：讓本檔（AGENTS.md）留在 GitHub 但不發佈到網站。
 - `#nav::before` 的寫法：導覽列背景刻意放在 `::before`，避免 iPhone Safari 的工具列被染色，不要改回直接設在 `#nav` 上。
 
 ---
