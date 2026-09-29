@@ -1,0 +1,94 @@
+/* ============================================================
+   首頁第一區塊 v2（米色底 + 白色框；左文 30%／右圖 70%）
+   只作用於 index.html 的 .hero-split，不影響其他頁面與 muse.css
+   色調依業主提供的新版設計圖取樣（2026-09-29）
+   ============================================================ */
+
+.hero-split {
+  --hs-bg:     #FEFEFE;
+  --hs-beige:  #F2F1ED; /* 設計圖第三區塊（ABOUT US）米色 */
+  --hs-navy:   #0F1A20;
+  --hs-navy-2: #2C333A;
+  --hs-ink:    #141414;
+  --hs-ink-2:  #555555;
+  --hs-accent: #8B5E4A;
+  --hs-frame:  24px;    /* 左右米色邊寬度 */
+  --hs-gap:    clamp(28px, 3vw, 48px); /* 上下米色留白 */
+  --hs-share:  .7;      /* 照片佔白框寬度比例 */
+
+  background: var(--hs-beige);
+  padding: calc(66px + var(--hs-gap)) 0 var(--hs-gap); /* 66px = fixed #nav 高度 */
+}
+
+/* 白色框：左文字、右照片 */
+.hs-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 7fr);
+  /* 高度跟著視窗，但不超過「照片寬 ÷ 1.5」，照片維持橫向寬幅 */
+  min-height: min(
+    clamp(480px, calc(100svh - 66px - 2 * var(--hs-gap)), 820px),
+    calc((100vw - 2 * var(--hs-frame)) * var(--hs-share) / 1.5)
+  );
+  background: var(--hs-bg);
+  border-inline: var(--hs-frame) solid var(--hs-beige); /* 左右米色邊 */
+}
+
+/* ── 左：文字 ── */
+.hs-text {
+  align-self: center;
+  padding: 56px clamp(28px, 3.2vw, 56px);
+}
+.hero-split .eyebrow { color: var(--hs-accent); }
+.hero-split h1 {
+  color: var(--hs-ink);
+  font-size: clamp(28px, 2.4vw, 42px);
+  line-height: 1.45;
+}
+.hero-split p.lead {
+  color: var(--hs-ink-2);
+  font-size: 15px;
+  margin-top: 20px;
+}
+.hero-split .hero-cta { margin-top: 30px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+.hero-split .btn { border-color: var(--hs-navy); color: var(--hs-navy); }
+.hero-split .btn:hover,
+.hero-split .btn:focus-visible { background: var(--hs-navy); color: #FFFFFF; }
+.hero-split .btn.solid { background: var(--hs-navy); color: #FFFFFF; }
+.hero-split .btn.solid:hover,
+.hero-split .btn.solid:focus-visible { background: var(--hs-navy-2); border-color: var(--hs-navy-2); }
+
+/* ── 右：封面照（照片已自行調色，不另加濾鏡） ── */
+.hs-media {
+  position: relative;
+  overflow: hidden;
+  background: var(--hs-navy);
+}
+.hs-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: 50% center;
+}
+
+/* ── 小筆電：30% 太窄，放寬文字欄 ── */
+@media (max-width: 1300px) {
+  .hero-split { --hs-share: .62; }
+  .hs-inner { grid-template-columns: minmax(0, 38fr) minmax(0, 62fr); }
+}
+
+/* ── 平板／手機：文字在上、照片在下 ── */
+@media (max-width: 900px) {
+  .hero-split { --hs-frame: 16px; }
+  .hs-inner {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+  .hs-text { padding: 44px 32px 36px; }
+  .hs-media { aspect-ratio: 4 / 3; }
+}
+@media (max-width: 640px) {
+  .hero-split { --hs-frame: 12px; }
+  .hs-text { padding: 32px 20px 28px; }
+}
