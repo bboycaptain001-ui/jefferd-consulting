@@ -97,7 +97,7 @@
   line-height: 1.5;
   letter-spacing: -.025em;
 }
-.home-page .hero-split .eyebrow { font-style: normal; font-family: 'Noto Sans TC', sans-serif; font-size: 13px; letter-spacing: .04em; }
+.home-page .hero-split .eyebrow { font-style: normal; font-family: 'Noto Sans TC', sans-serif; font-size: 13px; letter-spacing: .04em; text-wrap: balance; }
 .home-page .hero-split p.lead { margin-top: 26px; font-size: 15px; color: var(--ink-2); }
 .home-page .hero-cta { margin-top: 32px; gap: 12px; }
 .home-page .hero-split .btn { color: var(--ink); border-color: var(--ink); }
